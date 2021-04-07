@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "D:/Papers/DS2/LCRS/out/build/x64-Debug/CMakeFiles/LCRS.dir/embed.manifest"
