@@ -2,6 +2,9 @@
 #ifndef NODE_H_SY_
 #define NODE_H_SY_
 
+#include <utility>
+using std::swap;
+
 namespace sy
 {
 	template<typename ElemType>

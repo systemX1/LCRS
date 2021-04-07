@@ -5,13 +5,21 @@
 #include <iostream>
 using std::cin;
 
-#include <stdio.h>
+#include <vector>
+using std::vector;
 
 #include <string>
 using std::string;
 
-#include<vector>
-using std::vector;
+#include <regex>
+using std::regex_match;
+
+#include <map>
+using std::map;
+
+#include <functional>
+using std::function;
+using std::bind;
 
 #include "fmt/core.h"
 
@@ -24,30 +32,26 @@ class MainWindow
 public:
 	static MainWindow& getInstance() {
 		static MainWindow instance;
-		instance.init();
 		return instance;
 	}
-
-	//Pointer to Function
-	typedef void (MainWindow::* fp)();
-	//Array of Function pointers
-	fp afp[FUNCTION_NUMBER] = { &MainWindow::test0, &MainWindow::test1, &MainWindow::test2, &MainWindow::test3, &MainWindow::test4, &MainWindow::test5, &MainWindow::test6, &MainWindow::test7 };
-
+	
+private:
+	MainWindow() { init(); }
+	sy::LCRS<string> forest;
 	void init();
-	void test0();
+
+
+	void constructForest();
+	void displayForest() const;
+	void traverseForest() const;
+	void printExtraInfo() const;
+	void printHelp() const;
+
 	void test1();
 	void test2();
-	void test3();
-	void test4();
-	void test5();
-	void test6();
-	void test7();
-	void printLine();
-	bool isStringDigital(const string& s);
-private:
-	MainWindow() = default;
-private:
-
+	
+	static void printLine(const string& s);
+	static bool isStringDigital(const string& s);
 };
 
 #endif 
