@@ -9,16 +9,19 @@ void MainWindow::init()
 		fmt::print("\t\t0 - Construct Forest\tq - quit\n\
 		1 - Display Forest\t2 - Traverse Forest\n\
 		3 - Print Extra Result\th - Help\n\
-		t - Run Test1\t\ttt - Run Test2\n");
+		t1 - Run Test1\t\tt2 - Run Test2\n\
+		t+number - Run Test n\n");
 		
 		map<string, function<void()>> func = {
-			{ string("0"), [this] { constructForest(); }},
-			{ string("1"), [this] { displayForest(); }},
-			{ string("2"), [this] { traverseForest(); }},
-			{ string("3"), [this] { printExtraInfo(); }},
-			{ string("h"), [this] { printHelp(); }},
-			{ string("t"), [this] { test1(); }},
-			{ string("tt"), [this] { test2(); }}
+			{ string("0"), [this] { constructForest(); } },
+			{ string("1"), [this] { displayForest(); } },
+			{ string("2"), [this] { traverseForest(); } },
+			{ string("3"), [this] { printExtraInfo(); } },
+			{ string("h"), [this] { printHelp(); } },
+			{ string("t1"), [this] { test1(); } },
+			{ string("t2"), [this] { test2(); } },
+			{ string("t3"), [this] { test3(); } },
+			{ string("t4"), [this] { test4(); } }
 		};
 		
 		cin >> input;
@@ -47,6 +50,8 @@ void MainWindow::constructForest()
 	vector<int> parent;
 	vector<string> elem;
 	string in;
+
+	fmt::print("parent: ");
 	while (true)
 	{
 		cin >> in;
@@ -55,12 +60,18 @@ void MainWindow::constructForest()
 		parent.push_back(stoi(in));
 	}
 	in = string("");
+	fmt::print("\nelem: ");
 	while (true)
 	{
 		cin >> in;
 		if (in == string("#"))
 			break;
 		elem.push_back(in);
+	}
+	if(parent.empty() || elem.empty() || parent.size() != elem.size())
+	{
+		fmt::print("\nNot equal length of two rows or nothing\n");
+		return;
 	}
 
 	forest.reset(parent, elem, parent[0] * (-1));
@@ -75,26 +86,51 @@ void MainWindow::displayForest() const
 void MainWindow::traverseForest() const
 {
 	printLine(string("Traverse Forest"));
+	forest.printTraverseForest();
 }
 
 void MainWindow::printExtraInfo() const
 {
 	printLine(string("Print Extra Result"));
+	forest.printExtraInfo();
+}
+
+
+void MainWindow::testHandler(const vector<int>& parent, const vector<string>& elem, int test_num)
+{
+	printLine(string("Run Test" + std::to_string(test_num)));
+	forest.reset(parent, elem, parent[0] * (-1));
+	forest.printLCRS();
+	forest.printTraverseForest();
+	forest.printExtraInfo();
 }
 
 void MainWindow::test1()
 {
-	printLine(string("Run Test1"));
 	const vector<int> parent = { -6, 0, 0, 0, 1, 4, -4, 6, 6, 7, -5, 10, 11, 11, 11 };
 	const vector<string> elem = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" };
-	
-	forest.reset(parent, elem, parent[0] * (-1));
-	forest.printLCRS();
+	testHandler(parent, elem, 1);
 }
 
 void MainWindow::test2()
 {
-	printLine(string("Run Test2"));
+	const vector<int> parent = { -1 };
+	const vector<string> elem = { "Hello" };
+	testHandler(parent, elem, 2);
+}
+
+void MainWindow::test3()
+{
+	const vector<int> parent = { -1 };
+	const vector<string> elem = { "Hello" };
+	testHandler(parent, elem, 3);
+}
+
+void MainWindow::test4()
+{
+	const vector<int> parent = { -1 };
+	const vector<string> elem = { "Hello" };
+	testHandler(parent, elem, 4);
 }
 
 void MainWindow::printHelp() const

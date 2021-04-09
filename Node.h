@@ -10,8 +10,8 @@ namespace sy
 	template<typename ElemType>
 	struct Node
 	{
-		Node(ElemType x, Node* l = nullptr, Node* r = nullptr) : data(x), lChild(l), rChild(r) {}
-		Node(const Node& other) : data(other.data), lChild(other.lChild), rChild(other.rChild) {}
+		Node(ElemType x, Node<ElemType>* l = nullptr, Node<ElemType>* r = nullptr) : data(std::move(x)), lChild(l), rChild(r) {}
+		Node(const Node<ElemType>& other) : data(other.data), lChild(other.lChild), rChild(other.rChild) {}
 		Node<ElemType>& operator=(const Node<ElemType>& rhs)
 		{
 			if (this != &rhs)
