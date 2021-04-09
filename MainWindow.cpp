@@ -121,15 +121,15 @@ void MainWindow::test2()
 
 void MainWindow::test3()
 {
-	const vector<int> parent = { -1 };
-	const vector<string> elem = { "Hello" };
+	const vector<int> parent = { -6, 0, 0, 0, 0, 0 };
+	const vector<string> elem = { "Hello", "H", "e", "l", "l", "0" };
 	testHandler(parent, elem, 3);
 }
 
 void MainWindow::test4()
 {
-	const vector<int> parent = { -1 };
-	const vector<string> elem = { "Hello" };
+	const vector<int> parent = { -6, 0, 0, 0, 0, 0, -6, 6, 6, 6, 6, 6 };
+	const vector<string> elem = { "Hello", "H", "e", "l", "l", "0", "World", "W", "o", "r", "l", "d" };
 	testHandler(parent, elem, 4);
 }
 

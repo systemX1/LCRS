@@ -11,6 +11,10 @@ using std::queue;
 #include <string>
 using std::string;
 
+#include <algorithm>
+using std::max;
+using std::min;
+
 #include <utility>
 using std::swap;
 
@@ -71,6 +75,8 @@ namespace sy
 		int getForestLeafNum(Node<ElemType>* cur) const;
 		// get the height of BTree
 		int getBTreeHeight(Node<ElemType>* cur) const;
+		// get the num of BTree Node
+		int getBTreeSize(Node<ElemType>* cur) const;
 		// get the num of BTree's leaves
 		int getBTreeLeafNum(Node<ElemType>* cur) const;
 

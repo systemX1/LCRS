@@ -162,7 +162,18 @@ void sy::LCRS<ElemType>::levelOrderTraversal(vector<ElemType>& ret) const
 template <typename ElemType>
 void sy::LCRS<ElemType>::printExtraInfo() const
 {
-	fmt::print("The number of tree{}: {}\n", getForestTreeNum() > 1 ? "s" : "", getForestTreeNum());
+	int n = 0;
+	n = getForestTreeNum();
+	fmt::print("The number of the tree{}: \t\t\t{}\n", n > 1 ? "s" : "", n);
+	fmt::print("The height of the forest:\t\t\t{}\n", getForestHeight(root_));
+	n = getForestLeafNum(root_);
+	fmt::print("The number of the forest's lea{}:\t\t{}\n", n > 1 ? "ves" : "f", n);
+	fmt::print("The height of the BTree:\t\t\t{}\n", getBTreeHeight(root_));
+	fmt::print("The size of the BTree:\t\t\t\t{}\n", getBTreeSize(root_));
+	n = getBTreeLeafNum(root_);
+	fmt::print("The number of the BTree's lea{}:  \t\t{}\n", n > 1 ? "ves" : "f",  n);
+	n = getOneDegreeTreeLeafNum(root_);
+	fmt::print("The number of the forest's One-Degree node{}:\t{}\n", n > 1 ? "s" : "", n);
 }
 
 template <typename ElemType>
@@ -181,32 +192,57 @@ int sy::LCRS<ElemType>::getForestTreeNum() const
 template <typename ElemType>
 int sy::LCRS<ElemType>::getForestHeight(Node<ElemType>* cur) const
 {
-	
-	return 0;
+	if (cur == nullptr)
+		return 0;
+	return max(1 + getForestHeight(cur->lChild), getForestHeight(cur->rChild));
 }
 
 template <typename ElemType>
 int sy::LCRS<ElemType>::getForestLeafNum(Node<ElemType>* cur) const
 {
-	return 0;
+	if (cur == nullptr)
+		return 0;
+	if (cur->lChild == nullptr)
+		return 1 + getForestLeafNum(cur->rChild);
+	return getForestLeafNum(cur->lChild) + getForestLeafNum(cur->rChild);
 }
 
 template <typename ElemType>
 int sy::LCRS<ElemType>::getBTreeHeight(Node<ElemType>* cur) const
 {
-	return 0;
+	if(cur == nullptr)
+		return 0;
+	return 1 + max(getBTreeHeight(cur->lChild), getBTreeHeight(cur->rChild));
+}
+
+template <typename ElemType>
+int sy::LCRS<ElemType>::getBTreeSize(Node<ElemType>* cur) const
+{
+	if (cur == nullptr)
+		return 0;
+	return 1 + getBTreeSize(cur->lChild) + getBTreeSize(cur->rChild);
 }
 
 template <typename ElemType>
 int sy::LCRS<ElemType>::getBTreeLeafNum(Node<ElemType>* cur) const
 {
-	return 0;
+	if (cur == nullptr)
+		return 0;
+	int n = 0;
+	if (cur->lChild == nullptr && cur->rChild == nullptr)
+		n = 1;
+	return n + getBTreeLeafNum(cur->lChild) + getBTreeLeafNum(cur->rChild);
 }
 
 template <typename ElemType>
 int sy::LCRS<ElemType>::getOneDegreeTreeLeafNum(Node<ElemType>* cur) const
 {
-	return 0;
+	if (cur == nullptr)
+		return 0;
+	int n = 0;
+	if (cur->lChild != nullptr && cur->lChild->rChild == nullptr)
+		n = 1;
+	return n + getOneDegreeTreeLeafNum(cur->lChild) + getOneDegreeTreeLeafNum(cur->rChild);
 }
 
 
