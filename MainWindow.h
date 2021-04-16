@@ -21,7 +21,10 @@ using std::map;
 using std::function;
 using std::bind;
 
+#include <windows.h>
+
 #include "fmt/core.h"
+#include "fmt/color.h"
 
 #include "LCRS.hpp"
 
@@ -51,6 +54,14 @@ private:
 	void test2();
 	void test3();
 	void test4();
+	void test5();
+	void test6();
+	void test7();
+	void test8();
+	void test9();
+	void test10();
+	void test11();
+	void test12();
 	
 	static void printLine(const string& s);
 	static bool isStringDigital(const string& s);

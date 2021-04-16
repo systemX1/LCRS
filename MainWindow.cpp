@@ -21,7 +21,15 @@ void MainWindow::init()
 			{ string("t1"), [this] { test1(); } },
 			{ string("t2"), [this] { test2(); } },
 			{ string("t3"), [this] { test3(); } },
-			{ string("t4"), [this] { test4(); } }
+			{ string("t4"), [this] { test4(); } },
+			{ string("t5"), [this] { test5(); } },
+			{ string("t6"), [this] { test6(); } },
+			{ string("t7"), [this] { test7(); } },
+			{ string("t8"), [this] { test8(); } },
+			{ string("t9"), [this] { test9(); } },
+			{ string("t10"), [this] { test10(); } },
+			{ string("t11"), [this] { test11(); } },
+			{ string("t12"), [this] { test12(); } },
 		};
 		
 		cin >> input;
@@ -107,30 +115,86 @@ void MainWindow::testHandler(const vector<int>& parent, const vector<string>& el
 
 void MainWindow::test1()
 {
-	const vector<int> parent = { -6, 0, 0, 0, 1, 4, -4, 6, 6, 7, -5, 10, 11, 11, 11 };
-	const vector<string> elem = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" };
+	const vector<int> parent = { -1 };
+	const vector<string> elem = { "Hello" };
 	testHandler(parent, elem, 1);
 }
 
 void MainWindow::test2()
 {
-	const vector<int> parent = { -1 };
-	const vector<string> elem = { "Hello" };
+	const vector<int> parent = { -6, 0, 0, 0, 0, 0 };
+	const vector<string> elem = { "Hello", "H", "e", "l", "l", "0" };
 	testHandler(parent, elem, 2);
 }
 
 void MainWindow::test3()
 {
-	const vector<int> parent = { -6, 0, 0, 0, 0, 0 };
-	const vector<string> elem = { "Hello", "H", "e", "l", "l", "0" };
+	const vector<int> parent = { -6, 0, 0, 0, 0, 0, -6, 6, 6, 6, 6, 6 };
+	const vector<string> elem = { "Hello", "H", "e", "l", "l", "0", "World", "W", "o", "r", "l", "d" };
 	testHandler(parent, elem, 3);
 }
 
 void MainWindow::test4()
 {
+	const vector<int> parent = { -6, 0, 0, 0, 1, 4, -4, 6, 6, 7, -5, 10, 11, 11, 11 };
+	const vector<string> elem = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" };
+	testHandler(parent, elem, 4);
+}
+
+void MainWindow::test5()
+{
+	const vector<int> parent = { -1, -4, 1,	1,	2, -1, -1, -1 };
+	const vector<string> elem = { "A",	"B", "B1", "B2", "B1X",	"D", "E", "F" };
+	testHandler(parent, elem, 5);
+}
+
+void MainWindow::test6()
+{
+	const vector<int> parent = { -15, 0, 0,	2,	2,	4,	4,	5,	7,	7,	9,	9,	11,	11,	13 };
+	const vector<string> elem = { "A", "B", "C", "D", "E", "F",	"G", "H", "I", "J",	"K", "L", "M", "N",	"O" };
+	testHandler(parent, elem, 6);
+}
+
+void MainWindow::test7()
+{
+	const vector<int> parent = { -12, 0, 0,	0,	1,	1,	3,	6,	6,	6,	7,	9, -2, 	12, -5,	14,	15,	15,	15 };
+	const vector<string> elem = { "A", "B", "C", "D", "B1", "B1X", "D1", "D2X", "D2Y", "D2Z",	"D3", "D4", "G", "H", "K", "L", "M", "N", "O" };
+	testHandler(parent, elem, 7);
+}
+
+void MainWindow::test8()
+{
+	const vector<int> parent = { -1, -1, -6, 2,	2,	2,	5,	5, -1, -1, -6,	10,	10,	12,	12,	12, -2,	16 };
+	const vector<string> elem = { "XX", "YY", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",	"K", "L", "M","N", "O",	"P" };
+	testHandler(parent, elem, 8);
+}
+
+void MainWindow::test9()
+{
 	const vector<int> parent = { -6, 0, 0, 0, 0, 0, -6, 6, 6, 6, 6, 6 };
 	const vector<string> elem = { "Hello", "H", "e", "l", "l", "0", "World", "W", "o", "r", "l", "d" };
-	testHandler(parent, elem, 4);
+	testHandler(parent, elem, 9);
+}
+
+void MainWindow::test10()
+{
+	const vector<int> parent = { -6, 0, 0, 0, 0, 0, -6, 6, 6, 6, 6, 6 };
+	const vector<string> elem = { "Hello", "H", "e", "l", "l", "0", "World", "W", "o", "r", "l", "d" };
+	testHandler(parent, elem, 10);
+}
+
+void MainWindow::test11()
+{
+	const vector<int> parent = { -6, 0, 0, 0, 0, 0, -6, 6, 6, 6, 6, 6 };
+	const vector<string> elem = { "Hello", "H", "e", "l", "l", "0", "World", "W", "o", "r", "l", "d" };
+	testHandler(parent, elem, 11);
+}
+
+void MainWindow::test12()
+{
+	const vector<int> parent = { -6, 0, 0, 0, 0, 0, -6, 6, 6, 6, 6, 6 };
+	const vector<string> elem = { "Hello", "H", "e", "l", "l", "0", "World", "W", "o", "r", "l", "d" };
+	testHandler(parent, elem, 12);
 }
 
 void MainWindow::printHelp() const
@@ -148,7 +212,29 @@ void MainWindow::printHelp() const
 void MainWindow::printLine(const string& s)
 {
 	fmt::print("__________________________________________________________________\n");
-	fmt::print("\033[7m{}\033[m\n", s.c_str());
+	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	
+	CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
+	GetConsoleScreenBufferInfo(handle, &csbiInfo);
+	const WORD wOldColorAttrs = csbiInfo.wAttributes;
+
+	SetConsoleTextAttribute(handle,
+		BACKGROUND_RED |
+		BACKGROUND_GREEN |
+		BACKGROUND_BLUE |
+		BACKGROUND_INTENSITY
+	);
+	
+	fmt::print("{}", s.c_str());
+	
+	SetConsoleTextAttribute(handle,
+		wOldColorAttrs);
+
+	fmt::print("\n");
+	
+	//fmt::print("{}\n", s.c_str());
+	//fmt::print("\033[7m{}\033[m\n", s.c_str());
+	//fmt::print(fg(fmt::color::floral_white) | bg(fmt::color::slate_gray), "{}\n", s.c_str());
 }
 
 bool MainWindow::isStringDigital(const string& s)

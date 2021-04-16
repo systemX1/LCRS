@@ -50,7 +50,6 @@ sy::Node<ElemType>* sy::LCRS<ElemType>::createBTree(const vector<int>& parent, c
 		}
 	}
 	return root;
-	
 }
 
 template <typename ElemType>
